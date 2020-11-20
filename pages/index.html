@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   
+    <title>Document</title>
+</head>
+<body>
+
+    <!--
+        https://webdesign.tutsplus.com/pt/tutorials/create-a-customized-html5-audio-player--webdesign-7081
+		https://www.botecodigital.dev.br/javascript/controlando-o-elemento-audio-do-html5-com-javascript/
+    -->
+    <div class="container">
+<audio src="ze_cuevo.mp3" hidden class="audio"></audio>
+        <div class="container-music-list-barra-volume">
+            <div class="music-list">
+              <table class="table table-dark tabela" >
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Music</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Ano Lançamento</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+              <input type="file" name=""onchange="encodeImageFileAsURL(this)" id="">
+              
+            </div>
+           
+            <div class="barra-volume">
+            
+            </div>
+
+        </div>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" id="rola" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+        </div>
+        <div class="barra-musica">
+          <span class="anterior"><img src="img/left-arrow.svg" alt=""></span>
+          <span class="play"><img src="img/3443845751540882618.svg" alt=""></span>
+          <span class="proximo"><img src="img/right-arrow.svg" alt=""></span>
+        </div>
+    </div>
+   <script src="js/musicPlay.js"></script>
+   <script src="js/getBase64.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
