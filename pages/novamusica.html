@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="nome" placeholder="Nome Da Musica">
+    <input type="text" id="artista">
+    <input type="text" id="artistaSec">
+    <input type="file" name="" id="musicaArquivo" onchange="encodeImageFileAsURL(this)">
+    <input type="text" id="musica" hidden>
+    <input type="text" id="estilo">
+    <button onclick="cadastrar()">Cadastrar</button>
+</body>
+
+<script src="js/getBase64.js"></script>
+<script>
+   
+    function cadastrar(){
+        let data = new FormData();
+        data.append('tipo',1);
+        data.append('nome',document.getElementById('nome').value)
+        data.append('artista',document.getElementById('artista').value)
+        data.append('arstistaSec',document.getElementById('artistaSec').value)
+        data.append('musica',document.getElementById('musica').value)
+        data.append('estilo',document.getElementById('estilo').value)
+
+        fetch('http://localhost/Duda/controllers/Musica.php',{
+            method:'post',
+            body:data
+        }).then(
+            function (x){
+                alert(x);
+            }
+        )
+    }
+</script>
+</html>

@@ -17,6 +17,7 @@ function encodeImageFileAsURL(element) {
     var reader = new FileReader();
     reader.onloadend = function() {
     console.log(reader.result)
+    document.getElementById('musica').value= reader.result;
         
     }
         reader.readAsDataURL(file);
