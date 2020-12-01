@@ -23,7 +23,13 @@ function atualizar(){
                 clickMusic(nMusica);
                 ate=false;
             }catch{
-                ate= true;
+                if(nMusica> 5000){
+                    ate=false;
+
+                }else{
+                    ate= true;
+                }
+                
             }
             
         }
