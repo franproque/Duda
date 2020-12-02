@@ -1,7 +1,7 @@
 
 var nMusica=0;
 const audio =document.querySelector('.audio')
-
+var controle = false;
 var barraProgress =  document.getElementById('rola')
 let cont =0;
 document.querySelector('.play').addEventListener('click',xPlay,false);
@@ -15,8 +15,14 @@ function atualizar(){
     document.querySelector('.sec').innerHTML=secToStr(audio.currentTime);
     if(audio.currentTime==audio.duration){
         
-        audio.removeEventListener('timeupdate', atualizar , false);
-        var ate=true
+        passaMusica()
+
+    }
+}
+function passaMusica(){
+    audio.removeEventListener('timeupdate', atualizar , false);
+
+    var ate=true
         while(ate){
             try{
                 nMusica  =nMusica+1
@@ -24,6 +30,30 @@ function atualizar(){
                 ate=false;
             }catch{
                 if(nMusica> 5000){
+                    ate=false;
+                    nMusica=0;
+
+                }else{
+                    ate= true;
+                }
+                
+            }
+            
+        }
+}
+
+
+function voltaMusica(){
+    audio.removeEventListener('timeupdate', atualizar , false);
+
+    var ate=true
+        while(ate){
+            try{
+                nMusica  =nMusica-1
+                clickMusic(nMusica);
+                ate=false;
+            }catch{
+                if(nMusica==0){
                     ate=false;
 
                 }else{
@@ -33,10 +63,7 @@ function atualizar(){
             }
             
         }
-        
-    }
 }
-
 function xPlay(){
 if(cont%2 ==0 || cont==0){
 
@@ -71,6 +98,7 @@ function carregaMusicas(){
             var coluna1 = linha.insertCell(0);
             var coluna2 = linha.insertCell(1);
             var coluna3 = linha.insertCell(2);
+            var coluna4 = linha.insertCell(3);
             var entrada = `   <input type="text" id='${element.id}cv' value='${element.musica}'>`
             coluna3.setAttribute('hidden',"true")
             coluna3.setAttribute('id',element.id+"c")
@@ -79,20 +107,23 @@ function carregaMusicas(){
             coluna1.innerHTML=element.id;
             coluna2.innerHTML=element.nome;
             coluna3.innerHTML=entrada;
+            coluna4.innerHTML=element.artista;
         });
     })
 
    
 }
-
-
-
-   
-            
+function volume(){
+    audio.volume=parseInt(document.getElementById('volume').value)*0.01
+}
+document.querySelector('.proximo').addEventListener('click',passaMusica,false)
+document.querySelector('.anterior').addEventListener('click',voltaMusica,false)
+document.getElementById('volume').addEventListener('change',volume,false)   
 
 
 function clickMusic(element){
     nMusica=parseInt(element);
+    cont=1;
     console.log(element)
     console.log(nMusica)
     document.getElementById('rola').style.width=`0%`;
@@ -102,7 +133,7 @@ audio.play()
 }
 function inicio(){
     carregaMusicas()
-  
+    volume()
 }
 
 

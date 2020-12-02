@@ -27,9 +27,10 @@ echo json_encode($retorno);
         $retornoMusica[]=array(
             'id'=>$p->getId(),
             'nome'=>$p->getNome(),
-            'artista'=>$p->getArtista(),
+            'artista'=>$p->getArtista()->getNome(),
             'musica'=>$p->getMusica(),
-            'estilo'=>$p->getEstilo()
+            'estilo'=>$p->getEstilo(),
+            
         );
        // echo '</br>';
         //echo $p->getMusica();

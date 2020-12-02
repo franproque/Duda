@@ -2,7 +2,7 @@
 
 require_once 'Estilo_model.php';
 require_once 'Conexao_model.php';
-
+require_once 'Artista_model.php';
 class Musica{
 
     private $id;
@@ -62,7 +62,7 @@ class Musica{
     
     public function trasDoBanco(){
         $retorna=array();
-        $sql="SELECT * FROM tb_musicas";
+        $sql="select m.*, a.nome as 'nome_artista',a.fg_ativo as 'fg_artista' from tb_musicas as m INNER JOIN tb_artistas as a on m.id_artista = a.id;";
 
         $conecta= new Conexao('root','');
         $consulta=$conecta->conecta()->query($sql);
@@ -71,8 +71,10 @@ class Musica{
        echo $consulta->rowCount();
         foreach($consulta as $cont){
             $c = new Musica();
+            $p= new Artista();
 
-            $c->fabricaMusica($cont['id'],$cont['nome'],$cont['id_artista'],$cont['musica'],$cont['id_estilo'],$cont['fg_ativo']);
+            $p->fabricaArtista($cont['id_artista'],$cont['nome_artista'],$cont['fg_artista']);
+            $c->fabricaMusica($cont['id'],$cont['nome'],$p,$cont['musica'],$cont['id_estilo'],$cont['fg_ativo']);
             array_push($retorna,$c);
         }
 
