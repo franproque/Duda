@@ -56,6 +56,13 @@ VALUES('Desconhecido',1),
 ('João Bosco & Vinícius',1),
 ('Munhoz e Mariano',1);
 
+INSERT INTO tb_artistas(nome,fg_ativo) VALUES('Ghost',1),
+('Wesley Safadão',1),
+('Gusttavo Lima',1),
+('Henrique e Juliano',1);
+
+INSERT INTO tb_artistas(nome,fg_ativo) VALUES('Luiza e Maurilio',1),
+('Antony e Gabriel',1);
 INSERT INTO tb_estilos(estilo,fg_ativo)
 VALUES
 ('Sertanejo',1),

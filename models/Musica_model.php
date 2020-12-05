@@ -62,7 +62,7 @@ class Musica{
     
     public function trasDoBanco(){
         $retorna=array();
-        $sql="select m.*, a.nome as 'nome_artista',a.fg_ativo as 'fg_artista' from tb_musicas as m INNER JOIN tb_artistas as a on m.id_artista = a.id;";
+        $sql="select m.*, a.nome as 'nome_artista',a.fg_ativo as 'fg_artista' from tb_musicas as m INNER JOIN tb_artistas as a on m.id_artista = a.id ORDER BY m.id ASC";
 
         $conecta= new Conexao('root','');
         $consulta=$conecta->conecta()->query($sql);

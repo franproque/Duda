@@ -1,4 +1,4 @@
-
+var outraNMusica=0
 var nMusica=0;
 const audio =document.querySelector('.audio')
 var controle = false;
@@ -27,6 +27,7 @@ function passaMusica(){
             try{
                 nMusica  =nMusica+1
                 clickMusic(nMusica);
+             
                 ate=false;
             }catch{
                 if(nMusica> 5000){
@@ -86,7 +87,7 @@ function proximo(){
 function carregaMusicas(){
     var data = new FormData();
     data.append('tipo',2)
-    var musicas =fetch('http://localhost/Duda/controllers/Musica.php',{
+    var musicas =fetch('http://192.168.100.16/Duda/controllers/Musica.php',{
         method:'post',
         body:data
     }).then(
@@ -122,7 +123,25 @@ document.getElementById('volume').addEventListener('change',volume,false)
 
 
 function clickMusic(element){
+    
+    if(outraNMusica!=0){
+        try{
+
+    
+        document.getElementById(String(outraNMusica)).style.backgroundColor="#212529"
+        }catch{
+            console.log('Deu Erro')
+        }
+    }
+    
+    
     nMusica=parseInt(element);
+outraNMusica=nMusica;
+    document.getElementById(String(nMusica)).style.backgroundColor="blue"
+
+
+    
+   
     cont=1;
     console.log(element)
     console.log(nMusica)
