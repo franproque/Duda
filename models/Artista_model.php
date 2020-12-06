@@ -41,12 +41,20 @@ class Artista{
 
     }
 
-    public function trasDobanco(){
+    public function trasDoBanco(){
 
         $conexao = new Conexao('root','');
 
         $consulta = $conexao->conecta()->query("SELECT * FROM tb_artistas");
-        
+        $ArrayDeArtista= array();
+        foreach($consulta as $rc){
+            $a = new Artista();
+            $a->fabricaArtista($rc['id'],$rc['nome'],$rc['fg_ativo']);
+            array_push($ArrayDeArtista,$a);
+            
+        }
+        return $ArrayDeArtista;
     }
 }
+
 

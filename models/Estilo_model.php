@@ -39,16 +39,13 @@ public function incluirEstilo($estilo,$fg){
     $conecta->conecta()->query($sql);
 }
 
-public function trasBanco($tipo,$filtro){
+public function trasDoBanco(){
     $sql="select * from tb_estilos";
-    if($tipo==1){
-        $sql=$sql." where id =$filtro ";
-    }
+    
     $conecta = new Conexao('root','');
-  $retorno= $conecta->conecta()->query($sql);
-$linhas = $retorno->rowCount();
-$lista =array();
-echo $linhas;
+     $retorno= $conecta->conecta()->query($sql);
+    $lista =array();
+
   
 
   foreach($retorno as $cont){
